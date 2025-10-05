@@ -1,33 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Search, Filter, ExternalLink } from 'lucide-react';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+// Import JSON data directly
+import fundsData from '../data/funds.json';
 
 const FundDirectoryPage = () => {
-  const [funds, setFunds] = useState([]);
-  const [filteredFunds, setFilteredFunds] = useState([]);
+  const [funds] = useState(fundsData);
+  const [filteredFunds, setFilteredFunds] = useState(fundsData);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const fetchFunds = async () => {
-      try {
-        const response = await axios.get(`${API}/funds`);
-        setFunds(response.data);
-        setFilteredFunds(response.data);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching funds:', error);
-        setLoading(false);
-      }
-    };
-    fetchFunds();
-  }, []);
 
   useEffect(() => {
     let result = funds;
@@ -55,14 +38,6 @@ const FundDirectoryPage = () => {
     if (num >= 100) return `₹${(num / 100).toFixed(0)} Cr`;
     return num.toLocaleString('en-IN');
   };
-
-  if (loading) {
-    return (
-      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-page)' }}>
-        <div className="heading-3" style={{ color: 'var(--brand-primary)' }}>Loading...</div>
-      </div>
-    );
-  }
 
   return (
     <div style={{ background: 'var(--bg-page)', minHeight: '100vh', paddingTop: '80px' }}>

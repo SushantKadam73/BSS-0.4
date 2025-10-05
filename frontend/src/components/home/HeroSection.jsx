@@ -16,7 +16,7 @@ const HeroSection = () => {
       {/* Background Image */}
       <div className="hero-background">
         <img
-          src="https://customer-assets.emergentagent.com/job_bharat-forces/artifacts/6z7df7um_flag%20and%20soldiers_1755323045336.png"
+          src="/images/flag and soldiers_1755323045336.png"
           alt="Indian Armed Forces"
           className="hero-image"
           style={{

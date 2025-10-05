@@ -1,37 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { ExternalLink, Calendar, Users, TrendingUp, Building2 } from 'lucide-react';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+// Import JSON data directly
+import fundsData from '../data/funds.json';
 
 const FundDetailPage = () => {
   const { slug } = useParams();
-  const [fund, setFund] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchFund = async () => {
-      try {
-        const response = await axios.get(`${API}/funds/${slug}`);
-        setFund(response.data);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching fund:', error);
-        setLoading(false);
-      }
-    };
-    fetchFund();
-  }, [slug]);
-
-  if (loading) {
-    return (
-      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-page)' }}>
-        <div className="heading-3" style={{ color: 'var(--brand-primary)' }}>Loading...</div>
-      </div>
-    );
-  }
+  const fund = fundsData.find(f => f.slug === slug);
 
   if (!fund) {
     return (

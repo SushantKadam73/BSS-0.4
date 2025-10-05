@@ -1,35 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { Target, Eye, Shield, AlertCircle, Heart, Mail, Phone, CheckCircle, Sparkles } from 'lucide-react';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+// Import JSON data directly
+import staticData from '../data/static_data.json';
 
 const AboutPage = () => {
-  const [aboutContent, setAboutContent] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchAbout = async () => {
-      try {
-        const response = await axios.get(`${API}/about`);
-        setAboutContent(response.data);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching about content:', error);
-        setLoading(false);
-      }
-    };
-    fetchAbout();
-  }, []);
-
-  if (loading || !aboutContent) {
-    return (
-      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-page)' }}>
-        <div className="heading-3" style={{ color: 'var(--brand-primary)' }}>Loading...</div>
-      </div>
-    );
-  }
+  const aboutContent = staticData.about_content || {};
 
   return (
     <div style={{ background: 'var(--bg-page)', minHeight: '100vh', paddingTop: '80px' }}>
