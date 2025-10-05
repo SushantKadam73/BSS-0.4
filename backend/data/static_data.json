@@ -1,0 +1,124 @@
+{
+  "impact_stories": [
+    {
+      "id": "story-1",
+      "name": "Priya Sharma",
+      "relation": "Daughter of Veteran",
+      "story": "The educational grant helped me complete my engineering degree. My father served 22 years in the Army, and this support changed our family's future.",
+      "fund_slug": "armed-forces-flag-day-fund",
+      "image": "https://customer-assets.emergentagent.com/job_bharat-forces/artifacts/okn0b52h_solider%20family_1755323045337.png"
+    },
+    {
+      "id": "story-2",
+      "name": "Meera Devi",
+      "relation": "War Widow",
+      "story": "After losing my husband in the line of duty, the immediate financial assistance gave us stability. My children are now pursuing their dreams.",
+      "fund_slug": "bharat-ke-veer",
+      "image": "https://customer-assets.emergentagent.com/job_bharat-forces/artifacts/6z7df7um_flag%20and%20soldiers_1755323045336.png"
+    },
+    {
+      "id": "story-3",
+      "name": "Col. Rajesh Kumar (Retd.)",
+      "relation": "Veteran",
+      "story": "The medical assistance fund covered my surgery costs. It's reassuring to know the nation remembers our service even after retirement.",
+      "fund_slug": "national-defence-fund",
+      "image": "https://customer-assets.emergentagent.com/job_bharat-forces/artifacts/1ho9k1vu_people%20providing%20groceries%20to%20soldiers%20on%20a%20wheelchair.png"
+    }
+  ],
+  "news_highlights": [
+    {
+      "id": "news-1",
+      "title": "Armed Forces Flag Day 2024: Record Contributions",
+      "date": "2024-12-07",
+      "excerpt": "Flag Day 2024 witnessed record corporate and public participation, with REC Limited contributing ₹15 crores for education of 12,500 children of ex-servicemen.",
+      "fund_slug": "armed-forces-flag-day-fund",
+      "image": "https://customer-assets.emergentagent.com/job_bharat-forces/artifacts/qq6toc39_flag%20and%20salute%20of%20police.png"
+    },
+    {
+      "id": "news-2",
+      "title": "Bharat Ke Veer Increases Support Cap to ₹25 Lakh",
+      "date": "2023-10-10",
+      "excerpt": "Individual donation limit raised from ₹15 lakh to ₹25 lakh per braveheart family, ensuring enhanced support for CAPF martyrs' families.",
+      "fund_slug": "bharat-ke-veer",
+      "image": "https://customer-assets.emergentagent.com/job_bharat-forces/artifacts/tz251i7p_amar%20javan_1755323045336.png"
+    },
+    {
+      "id": "news-3",
+      "title": "PM Scholarship Scheme Supports 60,000+ Students",
+      "date": "2024-08-15",
+      "excerpt": "National Defence Fund's scholarship program has disbursed ₹140 crores, supporting technical and professional education for defence families.",
+      "fund_slug": "national-defence-fund",
+      "image": "https://customer-assets.emergentagent.com/job_bharat-forces/artifacts/6z7df7um_flag%20and%20soldiers_1755323045336.png"
+    }
+  ],
+  "cause_categories": [
+    {
+      "id": "education",
+      "title": "Education",
+      "description": "Support children of armed forces personnel with scholarships and educational grants",
+      "icon": "GraduationCap",
+      "related_fund_slugs": ["armed-forces-flag-day-fund", "national-defence-fund"]
+    },
+    {
+      "id": "medical",
+      "title": "Medical Aid",
+      "description": "Provide healthcare support and medical assistance to veterans and their families",
+      "icon": "Heart",
+      "related_fund_slugs": ["armed-forces-flag-day-fund", "bharat-ke-veer"]
+    },
+    {
+      "id": "widows",
+      "title": "War Widows",
+      "description": "Financial and social support for spouses of martyred personnel",
+      "icon": "Users",
+      "related_fund_slugs": ["armed-forces-flag-day-fund", "bharat-ke-veer"]
+    },
+    {
+      "id": "veterans",
+      "title": "Veterans",
+      "description": "Rehabilitation and welfare programs for retired armed forces personnel",
+      "icon": "Shield",
+      "related_fund_slugs": ["armed-forces-flag-day-fund", "national-defence-fund"]
+    }
+  ],
+  "about_content": {
+    "mission": "Bhartiya Sena Seva is an independent research-based aggregator platform dedicated to increasing awareness, transparency, and citizen participation in authentic government-backed armed forces welfare funds. We bridge the gap between citizens and soldier welfare initiatives through comprehensive, verified information.",
+    "vision": "To be the most trusted and comprehensive source of information on armed forces welfare schemes, enabling every citizen to make informed decisions about supporting our nation's heroes and their families.",
+    "values": [
+      "Transparency in all fund information",
+      "Verified research from official sources",
+      "Respect for armed forces personnel",
+      "Independence and non-partisanship",
+      "Citizen empowerment through information"
+    ],
+    "story": "Bhartiya Sena Seva was born from a deep sense of patriotism and the desire to contribute meaningfully to our nation. As a citizen, I felt the need to bridge the information gap between welfare schemes and the people they're meant to serve. This platform represents my humble contribution to honoring the sacrifices of our armed forces personnel and their families. By aggregating verified information and making it accessible, I hope to enable more citizens to participate in supporting those who protect our nation.",
+    "how_it_helps": [
+      {
+        "title": "Centralized Information",
+        "description": "All government-backed funds in one place, saving citizens hours of research time"
+      },
+      {
+        "title": "Verified Data",
+        "description": "Research compiled from official government sources, ensuring accuracy and reliability"
+      },
+      {
+        "title": "Easy Navigation",
+        "description": "Find the right fund for your cause quickly with our intuitive categorization"
+      },
+      {
+        "title": "Direct Links",
+        "description": "Seamless connection to official donation portals for secure contributions"
+      },
+      {
+        "title": "Impact Transparency",
+        "description": "Real statistics showing how funds are utilized and lives impacted"
+      }
+    ],
+    "ai_disclaimer": "This website and its research have been compiled with the assistance of AI technology to aggregate and present information efficiently. While every effort has been made to ensure accuracy, there may be inconsistencies or outdated information. All data is sourced from official government portals and documents. If you notice any discrepancies, please contact us so we can correct them promptly.",
+    "contact": {
+      "email": "contact@bhartiyasenaseva.in",
+      "note": "For corrections, suggestions, or partnership inquiries"
+    },
+    "disclaimer": "Bhartiya Sena Seva is NOT a government portal. We are an independent aggregator providing research-based information on government-backed armed forces funds. All donations are processed through official government portals only. We do not handle any financial transactions."
+  }
+}
