@@ -11,10 +11,10 @@
 
 ## Technical Stack
 - **Frontend**: React 19 with shadcn/ui components
-- **Backend**: FastAPI (Python)
-- **Database**: MongoDB
+- **Backend**: FastAPI (Python) with JSON data storage
+- **Database**: None (JSON files)
 - **Design System**: Pixel Pushers inspired (Black #1a1c1b + Lime Green #d9fb06)
-- **Fonts**: PP Right Grotesk (headlines), Inter (body text)
+- **Fonts**: PP Right Grotesk fallback (headlines), Inter (body text)
 
 ## Fund Coverage
 The platform currently aggregates research on three major funds:
