@@ -5,8 +5,8 @@ import { Shield, Mail, AlertCircle } from 'lucide-react';
 const Footer = () => {
   return (
     <footer style={{
-      background: 'var(--secondary-olive)',
-      borderTop: '1px solid var(--border-medium)',
+      background: 'var(--bg-page)',
+      borderTop: '2px solid var(--border-medium)',
       padding: '96px 40px 40px',
       marginTop: '120px'
     }}>
