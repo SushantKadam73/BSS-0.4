@@ -1,22 +1,13 @@
 from fastapi import FastAPI, APIRouter, HTTPException
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
-from motor.motor_asyncio import AsyncIOMotorClient
-import os
+import json
 import logging
 from pathlib import Path
-from typing import List, Optional
-from models import Fund, AggregatedImpact, ImpactStory, NewsHighlight, AboutContent, CauseCategory
-from fund_parser import parse_fund_from_md
-from seed_data import IMAGES, IMPACT_STORIES, NEWS_HIGHLIGHTS, ABOUT_CONTENT, CAUSE_CATEGORIES
+from typing import List, Optional, Dict, Any
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
-
-# MongoDB connection
-mongo_url = os.environ['MONGO_URL']
-client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ['DB_NAME']]
 
 # Configure logging
 logging.basicConfig(
@@ -31,40 +22,46 @@ app = FastAPI(title="Bhartiya Sena Seva API")
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
 
+# Global data storage
+FUNDS_DATA = []
+IMPACT_STATS = {}
+STATIC_DATA = {}
 
-# Startup: Load fund data from MD files
+
+# Startup: Load JSON data files
 @app.on_event("startup")
 async def startup_event():
-    """Load fund data from markdown files into database on startup"""
+    """Load data from JSON files on startup"""
+    global FUNDS_DATA, IMPACT_STATS, STATIC_DATA
+    
     try:
-        # Check if funds already exist
-        existing_count = await db.funds.count_documents({})
-        if existing_count > 0:
-            logger.info(f"Funds already loaded: {existing_count} funds in database")
-            return
+        data_dir = ROOT_DIR / 'data'
         
-        logger.info("Loading fund data from markdown files...")
+        # Load funds data
+        funds_path = data_dir / 'funds.json'
+        if funds_path.exists():
+            with open(funds_path, 'r', encoding='utf-8') as f:
+                FUNDS_DATA = json.load(f)
+            logger.info(f"Loaded {len(FUNDS_DATA)} funds from JSON")
         
-        # Parse all three funds
-        funds_to_load = [
-            ('armed-forces-flag-day-fund.md', 'flag_soldiers'),
-            ('bharat-ke-veer.md', 'soldier_family'),
-            ('national-defence-fund.md', 'wheelchair')
-        ]
+        # Load impact stats
+        stats_path = data_dir / 'impact_stats.json'
+        if stats_path.exists():
+            with open(stats_path, 'r', encoding='utf-8') as f:
+                IMPACT_STATS = json.load(f)
+            logger.info("Loaded impact statistics from JSON")
         
-        loaded_funds = []
-        for filename, image_key in funds_to_load:
-            filepath = ROOT_DIR / 'data' / filename
-            if filepath.exists():
-                fund = parse_fund_from_md(str(filepath), IMAGES)
-                await db.funds.insert_one(fund.dict())
-                loaded_funds.append(fund.name)
-                logger.info(f"Loaded fund: {fund.name}")
+        # Load static data (stories, news, causes, about)
+        static_path = data_dir / 'static_data.json'
+        if static_path.exists():
+            with open(static_path, 'r', encoding='utf-8') as f:
+                STATIC_DATA = json.load(f)
+            logger.info("Loaded static content from JSON")
         
-        logger.info(f"Successfully loaded {len(loaded_funds)} funds: {', '.join(loaded_funds)}")
+        logger.info("✓ All data loaded successfully from JSON files")
         
     except Exception as e:
-        logger.error(f"Error loading fund data: {str(e)}")
+        logger.error(f"Error loading data: {str(e)}")
         raise
 
 
@@ -73,104 +70,75 @@ async def startup_event():
 async def root():
     return {
         "message": "Bhartiya Sena Seva API",
-        "version": "1.0",
-        "description": "Independent aggregator for Indian Armed Forces welfare funds"
+        "version": "2.0",
+        "description": "Independent aggregator for Indian Armed Forces welfare funds",
+        "data_source": "JSON files"
     }
 
 
-@api_router.get("/funds", response_model=List[Fund])
-async def get_all_funds(category: Optional[str] = None):
+@api_router.get("/funds")
+async def get_all_funds(category: Optional[str] = None) -> List[Dict[str, Any]]:
     """Get all funds, optionally filtered by category"""
-    query = {}
     if category:
-        query["category"] = category
-    
-    funds = await db.funds.find(query).to_list(100)
-    return [Fund(**fund) for fund in funds]
+        return [f for f in FUNDS_DATA if f.get('category') == category]
+    return FUNDS_DATA
 
 
-@api_router.get("/funds/{slug}", response_model=Fund)
-async def get_fund_by_slug(slug: str):
+@api_router.get("/funds/{slug}")
+async def get_fund_by_slug(slug: str) -> Dict[str, Any]:
     """Get a specific fund by slug"""
-    fund = await db.funds.find_one({"slug": slug})
+    fund = next((f for f in FUNDS_DATA if f.get('slug') == slug), None)
     if not fund:
         raise HTTPException(status_code=404, detail=f"Fund with slug '{slug}' not found")
-    return Fund(**fund)
+    return fund
 
 
-@api_router.get("/impact-stats", response_model=AggregatedImpact)
-async def get_aggregated_impact():
+@api_router.get("/impact-stats")
+async def get_aggregated_impact() -> Dict[str, Any]:
     """Get aggregated impact statistics across all funds"""
-    funds = await db.funds.find().to_list(100)
-    
-    total_corpus = 0
-    annual_disbursements = 0
-    beneficiaries_reached = 0
-    scholarships = 0
-    
-    for fund_doc in funds:
-        fund = Fund(**fund_doc)
-        stats = fund.impact_stats
-        
-        if stats.total_corpus:
-            total_corpus += stats.total_corpus
-        if stats.total_disbursed:
-            annual_disbursements += stats.total_disbursed
-        if stats.beneficiaries_supported:
-            beneficiaries_reached += stats.beneficiaries_supported
-        if stats.scholarships_disbursed:
-            scholarships += stats.scholarships_disbursed
-    
-    # Medical welfare estimate (from AFFDF medical grants)
-    medical_welfare = 20000  # ₹200 crores in lakhs
-    
-    return AggregatedImpact(
-        total_corpus=total_corpus,
-        annual_disbursements=annual_disbursements,
-        beneficiaries_reached=beneficiaries_reached,
-        scholarships_provided=scholarships if scholarships > 0 else 60000,
-        medical_welfare_spend=medical_welfare,
-        last_updated='2025-01-15'
-    )
+    return IMPACT_STATS
 
 
-@api_router.get("/impact-stories", response_model=List[ImpactStory])
-async def get_impact_stories(fund_slug: Optional[str] = None):
+@api_router.get("/impact-stories")
+async def get_impact_stories(fund_slug: Optional[str] = None) -> List[Dict[str, Any]]:
     """Get impact stories, optionally filtered by fund"""
+    stories = STATIC_DATA.get('impact_stories', [])
     if fund_slug:
-        return [story for story in IMPACT_STORIES if story.fund_slug == fund_slug]
-    return IMPACT_STORIES
+        return [s for s in stories if s.get('fund_slug') == fund_slug]
+    return stories
 
 
-@api_router.get("/news", response_model=List[NewsHighlight])
-async def get_news_highlights(fund_slug: Optional[str] = None):
+@api_router.get("/news")
+async def get_news_highlights(fund_slug: Optional[str] = None) -> List[Dict[str, Any]]:
     """Get news highlights, optionally filtered by fund"""
+    news = STATIC_DATA.get('news_highlights', [])
     if fund_slug:
-        return [news for news in NEWS_HIGHLIGHTS if news.fund_slug == fund_slug]
-    return NEWS_HIGHLIGHTS
+        return [n for n in news if n.get('fund_slug') == fund_slug]
+    return news
 
 
-@api_router.get("/about", response_model=AboutContent)
-async def get_about_content():
+@api_router.get("/about")
+async def get_about_content() -> Dict[str, Any]:
     """Get about page content"""
-    return ABOUT_CONTENT
+    return STATIC_DATA.get('about_content', {})
 
 
-@api_router.get("/causes", response_model=List[CauseCategory])
-async def get_cause_categories():
+@api_router.get("/causes")
+async def get_cause_categories() -> List[Dict[str, Any]]:
     """Get all cause categories"""
-    return CAUSE_CATEGORIES
+    return STATIC_DATA.get('cause_categories', [])
 
 
-@api_router.get("/causes/{cause_id}/funds", response_model=List[Fund])
-async def get_funds_by_cause(cause_id: str):
+@api_router.get("/causes/{cause_id}/funds")
+async def get_funds_by_cause(cause_id: str) -> List[Dict[str, Any]]:
     """Get funds related to a specific cause"""
-    cause = next((c for c in CAUSE_CATEGORIES if c.id == cause_id), None)
+    causes = STATIC_DATA.get('cause_categories', [])
+    cause = next((c for c in causes if c.get('id') == cause_id), None)
     if not cause:
         raise HTTPException(status_code=404, detail=f"Cause '{cause_id}' not found")
     
-    funds = await db.funds.find({"slug": {"$in": cause.related_fund_slugs}}).to_list(100)
-    return [Fund(**fund) for fund in funds]
+    related_slugs = cause.get('related_fund_slugs', [])
+    return [f for f in FUNDS_DATA if f.get('slug') in related_slugs]
 
 
 # Include the router in the main app
@@ -183,8 +151,3 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-
-@app.on_event("shutdown")
-async def shutdown_db_client():
-    client.close()
