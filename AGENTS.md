@@ -296,8 +296,68 @@ User-provided images for Phase 1:
 - Purpose: Research, Information, Awareness
 - Contribution Method: Redirect to official portals only
 
+## Recent Changes (v2.0)
+
+### Architecture Migration
+**Removed MongoDB** - Transitioned to JSON-based data storage for simplicity:
+- Created `parse_funds_to_json.py` to convert MD files to structured JSON
+- Stores data in 3 JSON files: `funds.json`, `impact_stats.json`, `static_data.json`
+- Backend now serves from in-memory JSON (loaded on startup)
+- Eliminates database dependency
+
+### Enhanced About Page
+Added comprehensive sections:
+- **Story of Bhartiya Sena Seva**: Personal motivation behind the platform
+- **How We Help Citizens**: 5 key value propositions with icons
+- **AI Disclaimer**: Transparency about AI-assisted research
+- **Contact Information**: Email for feedback and corrections
+- Improved layout with better visual hierarchy
+
+### Design Improvements
+- **Footer**: Fixed color scheme (changed to black background for better contrast)
+- **Enhanced borders**: 2px instead of 1px for better definition
+- **Responsive improvements**: Better mobile layouts
+
+### Data Structure
+Each fund now includes:
+- All 14 sections from research reports (stored in `sections` object)
+- Bank details extracted and parsed
+- Impact statistics with fiscal year
+- Beneficiary and support type categorization
+
+## Pending Features (Next Implementation)
+
+### 1. Comprehensive Fund Detail Pages
+**Status**: Structure ready, display pending
+- Show all 14 sections from MD research reports
+- Structured presentation with tabs or accordion
+- Financial data tables and charts
+- Historical timeline of the fund
+
+### 2. Bank Details Display
+**Status**: Data parsed, UI pending
+- Display bank account information for each fund
+- Show both online portal links AND bank transfer details
+- Multiple bank options (PNB, ICICI, SBI)
+- QR codes for digital payments
+
+### 3. News & Media Gallery
+**Status**: Mock data ready
+- Flag Day ceremony images
+- Event coverage photos
+- Beneficiary success stories with images
+- Video testimonials (future)
+
+### 4. Enhanced Donation Section
+**Status**: Partial implementation
+- Comprehensive "How to Contribute" page
+- Step-by-step donation guides
+- Tax benefit information (Section 80G)
+- CSR contribution guidelines
+
 ---
 
 **Last Updated**: January 2025  
-**Current Phase**: Phase 1 Development  
-**Next Milestone**: Phase 1 Launch with 3 funds
+**Current Version**: v2.0 (JSON-based)  
+**Current Phase**: Phase 1 Complete  
+**Next Milestone**: Comprehensive fund pages with full MD content
