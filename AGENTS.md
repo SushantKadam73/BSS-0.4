@@ -52,7 +52,7 @@ The platform currently aggregates research on three major funds:
 ## Development Phases
 
 ### Phase 1: Core Design, Structure & Development ✅
-**Status**: In Progress
+**Status**: Completed (v2.0)
 
 #### Deliverables:
 1. **Landing Page (Homepage)**
