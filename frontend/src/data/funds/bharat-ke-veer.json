@@ -1,0 +1,92 @@
+{
+  "meta": {
+    "title": "Bharat Ke Veer Fund",
+    "tagline": "Honoring the brave hearts who made the supreme sacrifice",
+    "category": "Martyrs' Welfare",
+    "official_url": "https://bharatkeveer.gov.in",
+    "featured_image": "/images/amar javan_1755323045336.png"
+  },
+  "attributes": [
+    {
+      "key": "name",
+      "label": "Fund",
+      "value": "Bharat Ke Veer Fund"
+    },
+    {
+      "key": "managed_by",
+      "label": "Managed By",
+      "value": "Ministry of Home Affairs"
+    },
+    {
+      "key": "established_year",
+      "label": "Established",
+      "value": "2017"
+    },
+    {
+      "key": "official_url",
+      "label": "Official Portal",
+      "value": "https://bharatkeveer.gov.in"
+    },
+    {
+      "key": "impact.total_disbursed",
+      "label": "Total Disbursed",
+      "value": 76.97
+    },
+    {
+      "key": "per_family_cap",
+      "label": "Per-Family Contribution Cap",
+      "value": "₹25 Lakh"
+    },
+    {
+      "key": "launch_date",
+      "label": "Launch Date",
+      "value": "April 9, 2017"
+    },
+    {
+      "key": "beneficiaries",
+      "label": "Beneficiary Forces",
+      "value": "CAPF & State Police"
+    },
+    {
+      "key": "tax_exemption",
+      "label": "Tax Exemption",
+      "value": "100% under Section 80G"
+    }
+  ],
+  "bank_details": [
+    {
+      "label": "SBI Main",
+      "account_name": "Bharat Ke Veer Fund",
+      "account_number": "00000XXXXXXXXXX",
+      "ifsc": "SBIN0000691",
+      "bank": "State Bank of India"
+    },
+    {
+      "label": "ICICI",
+      "account_name": "Bharat Ke Veer Fund",
+      "account_number": "00000XXXXXXXXXX",
+      "ifsc": "ICIC0000001",
+      "bank": "ICICI Bank"
+    }
+  ],
+  "sections": {
+    "Identity & Origin": {
+      "md": "Bharat Ke Veer was launched on April 9, 2017, by the Government of India to enable willing individuals and organizations to contribute to the families of martyred Central Armed Police Forces (CAPF) and state police personnel who lay down their lives in the line of duty. The initiative was conceptualized to honor the supreme sacrifice of brave hearts and provide direct financial support to their families."
+    },
+    "Purpose & Beneficiaries": {
+      "md": "The fund provides direct financial assistance to the next of kin (NoK) and dependents of personnel from Central Armed Police Forces (CRPF, BSF, CISF, ITBP, SSB, NSG, Assam Rifles) and state police forces who sacrifice their lives in the line of duty. Each family can receive contributions up to ₹25 lakh from public donations, which are transferred directly to their bank accounts within 30 days of the incident."
+    },
+    "Legal & Governance": {
+      "md": "The fund operates under the Ministry of Home Affairs with a robust governance structure. It is managed by a committee comprising senior officials from MHA and other stakeholders. The fund ensures 100% transparency with all contributions being directly transferred to beneficiary families. Regular audits and public disclosures maintain accountability."
+    },
+    "Financials": {
+      "md": "Since its launch in 2017, Bharat Ke Veer has collected and disbursed over ₹76.97 crores (as of 2024) to families of martyred personnel. The fund accepts contributions from individuals (₹10 to ₹25 lakh per family), corporate entities, and institutions. All contributions are 100% tax-exempt under Section 80G. The fund has partnered with multiple payment gateways and banks for seamless donation processing."
+    },
+    "Money Flows & Donation Channels": {
+      "md": "Donations can be made through the official website bharatkeveer.gov.in using credit/debit cards, net banking, UPI, and mobile wallets. Contributors can choose to donate to a specific martyr's family or to the corpus. Each donor receives an instant acknowledgment and tax exemption certificate. NRIs and foreign nationals can also contribute through international payment options."
+    },
+    "Impact & Verification": {
+      "md": "The fund has directly benefited hundreds of families of martyred CAPF and state police personnel. The quick disbursement mechanism (within 30 days) ensures timely financial support during the most challenging times. The platform maintains complete transparency with public disclosure of all contributions and disbursements. Regular impact assessments and beneficiary feedback mechanisms ensure effective utilization and continuous improvement."
+    }
+  }
+}

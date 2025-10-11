@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "title": "National Defence Fund (NDF)",
+    "tagline": "Supporting armed forces personnel and their families during national emergencies",
+    "category": "Defence & Emergency Relief",
+    "official_url": "https://ndf.gov.in",
+    "featured_image": "/images/flag and soldiers_1755323045336.png"
+  },
+  "attributes": [
+    {
+      "key": "name",
+      "label": "Fund",
+      "value": "National Defence Fund (NDF)"
+    },
+    {
+      "key": "managed_by",
+      "label": "Managed By",
+      "value": "Prime Minister's Office"
+    },
+    {
+      "key": "established_year",
+      "label": "Established",
+      "value": "1962"
+    },
+    {
+      "key": "official_url",
+      "label": "Official Portal",
+      "value": "https://ndf.gov.in"
+    },
+    {
+      "key": "impact.total_corpus",
+      "label": "Total Corpus",
+      "value": 1448.38
+    },
+    {
+      "key": "impact.annual_receipts_2024_25",
+      "label": "Annual Receipts (2024-25)",
+      "value": 130.95
+    },
+    {
+      "key": "chairman",
+      "label": "Chairman",
+      "value": "Prime Minister of India"
+    },
+    {
+      "key": "tax_exemption",
+      "label": "Tax Exemption",
+      "value": "100% under Section 80G"
+    }
+  ],
+  "bank_details": [
+    {
+      "label": "SBI Main",
+      "account_name": "National Defence Fund",
+      "account_number": "00000XXXXXXXXXX",
+      "ifsc": "SBIN0000691",
+      "bank": "State Bank of India"
+    },
+    {
+      "label": "PNB",
+      "account_name": "National Defence Fund",
+      "account_number": "00000XXXXXXXXXX",
+      "ifsc": "PUNB0244000",
+      "bank": "Punjab National Bank"
+    }
+  ],
+  "sections": {
+    "Identity & Origin": {
+      "md": "The National Defence Fund was established in 1962 during the Indo-China conflict. It is managed directly by the Prime Minister's Office and serves as the nation's primary fund for supporting armed forces personnel and their families during times of war, natural calamities, and national emergencies."
+    },
+    "Purpose & Beneficiaries": {
+      "md": "The NDF provides welfare support to members of the Armed Forces (Army, Navy, Air Force) and para-military forces, as well as their dependents. The fund is utilized for rehabilitation of disabled personnel, welfare of war widows and their families, and other welfare measures for ex-servicemen and their dependents."
+    },
+    "Legal & Governance": {
+      "md": "The fund operates under the direct oversight of the Prime Minister's Office. It is governed by a committee chaired by the Prime Minister with members including Defence Minister, Finance Minister, and other senior officials. The fund follows strict governance protocols and is subject to regular audits."
+    },
+    "Financials": {
+      "md": "The NDF receives contributions from individuals, corporate entities, and organizations. As of FY 2024-25, the corpus stands at approximately ₹1,448.38 crores with annual receipts of around ₹130.95 crores. All contributions are tax-exempt under Section 80G of the Income Tax Act."
+    },
+    "Money Flows & Donation Channels": {
+      "md": "Donations can be made through direct bank transfers, online payment gateways, cheques/DDs payable to 'National Defence Fund'. The fund accepts contributions from Indian citizens as well as NRIs and foreign nationals. All donations are acknowledged with official receipts for tax purposes."
+    },
+    "Impact & Verification": {
+      "md": "The fund has supported thousands of armed forces families over the decades, providing critical financial assistance during emergencies, wars, and natural disasters. Regular audits and reports ensure transparency and accountability in fund utilization. The impact is verified through parliamentary oversight and CAG audits."
+    }
+  }
+}
